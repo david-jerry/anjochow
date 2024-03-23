@@ -4,7 +4,7 @@ This build limits the runtime error on aws server or any server due to nextjs re
 
 **!NOTE::** ``An S3 bucket is required to host all static assets for any app versions.``
 
-## Configurations / Setups
+***Configurations / Setups***
 
 First configure the [next.config.[ts/mjs]](/next.config.mjs) file with the commands below:
 
@@ -87,7 +87,7 @@ USER node
 CMD ["npm", "run", "start"]
 ```
 
-###### Notes
+***Notes***
 
 - Multi-stage builds are used to reduce the final size of the container.
 A base image is used to share environment variables between build & runtime stages.
@@ -136,7 +136,7 @@ dokku domains:add DOKKU_APP_NAME example.com
 dokku letsencrypt DOKKU_APP_NAME
 ```
 
-### Continuous deployment with GitHub Actions
+***Continuous deployment with GitHub Actions***
 
 It is way easier to push to github and have the deployment process automate on its own with less of my interactions. So I create a github action to automate the processes for me upon deployment.
 
@@ -167,7 +167,7 @@ DOKKU_HOST
 DOKKU_SSH_PRIVATE_KEY
 ```
 
-#### Workflows
+***Workflows***
 
 I use `release drafter` to automatically draft new releases and bump versions and I find it really useful.
 
@@ -269,13 +269,13 @@ jobs:
             dokku cleanup"
 ```
 
-###### Notes
+***Notes***
 
 - Static assets are copied out of the docker image as the file hashes don't match when building in different OS environments (even when setting the Next.js build ID).
 
 - `APP_VERSION` is used as the build ID and is set from the GitHub Release tag value
 
-###### Release Workflow
+***Release Workflow***
 
 - Add new features with pull requests Release drafter will drafter new releases based on merged pull requests, as well as bump the next release version
 - When happy to release, simply publish the latest draft release This will trigger the publish workflow and the app will be deployed using the release tag version.

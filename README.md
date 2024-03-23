@@ -14,7 +14,7 @@ This is a project for a food vendoring, meal planning and delivery service. With
 2. **STEP II -** Install required packages for testing and development:
 
    ```shell
-    npm install 
+    npm install
     # or
     yarn install
    ```
