@@ -50,3 +50,9 @@ This is a project for a food vendoring, meal planning and delivery service. With
 ## Deployment
 
 To deploy the script read the deployment [docs](/DEPLOY.md)
+
+## License Agreement*
+
+It is important to go through the agreement documentation to know the bounds with which this project can be used and how its source codes can be used.
+
+[Licensing](/LICENSE)

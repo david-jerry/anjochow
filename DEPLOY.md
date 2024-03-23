@@ -280,4 +280,4 @@ jobs:
 - Add new features with pull requests Release drafter will drafter new releases based on merged pull requests, as well as bump the next release version
 - When happy to release, simply publish the latest draft release This will trigger the publish workflow and the app will be deployed using the release tag version.
 
-#### [< README Information >](README.md)
+#### [🤛  Back to README](README.md)
