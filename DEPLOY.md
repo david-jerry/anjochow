@@ -1,12 +1,12 @@
-# Deploy a Next.js app to dokku & Static Assets to S3
+# DEPLOYMENT TO DOKKU USING DOCKER & AWS S3 STORAGE FOR ASSET FILES
 
 This build limits the runtime error on aws server or any server due to nextjs repeated build script being relaunched on every new push.
 
-``!NOTE:: An S3 bucket is required to host all static assets for any app versions.``
+**!NOTE::** ``An S3 bucket is required to host all static assets for any app versions.``
 
 ## Configurations / Setups
 
-First I configure the `next.config.ts` file with the following below:
+First configure the [next.config.[ts/mjs]](/next.config.mjs) file with the commands below:
 
 ```js
 /** @type {import('next').NextConfig} */
@@ -24,7 +24,7 @@ const nextConfig = {
 export default nextConfig;
 ```
 
-Then I setup a `Dockerfile` in the root of the application being deployed and add the following commands into it:
+Then setup a [Dockerfile](/Dockerfile) in the root of the application being deployed and add the following commands into it:
 
 ```dockerfile
 FROM node:21-alpine3.18 as base
@@ -48,10 +48,10 @@ ENV CI true
 
 COPY package.json yarn.lock ./
 
-RUN yarn install
+RUN npm install
 COPY . .
 
-RUN NODE_ENV=production yarn build
+RUN NODE_ENV=production npm run build
 RUN npm prune --production
 RUN node-prune node_modules
 
@@ -59,10 +59,10 @@ RUN node-prune node_modules
 FROM base
 
 LABEL maintainer=jeremiahedavid@gmail.com
-LABEL org.opencontainers.image.source https://github.com/david-jerry/website
-LABEL org.label-schema.name="website"
+LABEL org.opencontainers.image.source https://github.com/david-jerry/anjochow
+LABEL org.label-schema.name="anjochow"
 LABEL org.label-schema.description="Jeremiah's Online Portfolio"
-LABEL org.label-schema.vcs-url="https://github.com/david-jerry/website"
+LABEL org.label-schema.vcs-url="https://github.com/david-jerry/anjochow"
 LABEL org.label-schema.usage="README.md"
 LABEL org.label-schema.vendor="david-jerry"
 
@@ -84,7 +84,7 @@ EXPOSE 3000
 
 USER node
 
-CMD ["yarn", "start"]
+CMD ["npm", "run", "start"]
 ```
 
 ###### Notes
@@ -100,21 +100,21 @@ A base image is used to share environment variables between build & runtime stag
 First I build the app image locally, setting `ASSET_PREFIX=/` to serve assets from the app instead of S3
 
 ```shell
-docker build -t ghcr.io/david-jerry/website:latest --build-arg ASSET_PREFIX=/ .
+docker build -t ghcr.io/david-jerry/anjochow:latest --build-arg ASSET_PREFIX=/ .
 ```
 
 I `Run` the app `locally` to test everything works as expected:
 
 ```shell
-docker run --publish 3000:3000 ghcr.io/david-jerry/website:latest
+docker run --publish 3000:3000 ghcr.io/david-jerry/anjochow:latest
 ```
 
 I then publish the image to GitHub container registry:
 
 ```shell
 echo $CR_PAT | docker login ghcr.io -u david-jerry --password-stdin
-docker build -t ghcr.io/david-jerry/website:latest .
-docker push ghcr.io/david-jerry/website:latest
+docker build -t ghcr.io/david-jerry/anjochow:latest .
+docker push ghcr.io/david-jerry/anjochow:latest
 ```
 
 Then on my `dokku` server I setup these configuration:
@@ -171,7 +171,7 @@ DOKKU_SSH_PRIVATE_KEY
 
 I use `release drafter` to automatically draft new releases and bump versions and I find it really useful.
 
-Then, the workflow file below demonstrates how to release the app when creating a new GitHub Release. Place this file in location `.github/workflows/publish.yml`:
+Then, the workflow file below demonstrates how to release the app when creating a new GitHub Release. Place this file in location [.github/workflows/publish.yml](/.github/workplows/deploy.yml):
 
 ```yml
 name: Publish

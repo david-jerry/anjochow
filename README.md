@@ -4,10 +4,10 @@ This is a project for a food vendoring, meal planning and delivery service. With
 
 ## Getting Started
 
-1. **STEP I -** Clone the project to your own system and change directory into thie clones project to get started. `run code`:
+1. **STEP I -** Clone the project to your own system and change directory into this clones project to get started. `run code`:
 
    ```shell
-   git clone https://github.com/jerry-david/anjochow
+   git clone https://github.com/david-jerry/anjochow
    cd anjochow
    ```
 
@@ -46,3 +46,7 @@ This is a project for a food vendoring, meal planning and delivery service. With
 ✔ Customer Order List with `multiple location pickup points`
 
 [Read more](https://anjochow.com/about/features)
+
+## Deployment
+
+To deploy the script read the deployment [docs](/DEPLOY.md)
