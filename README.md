@@ -22,7 +22,7 @@ This is a project for a food vendoring, meal planning and delivery service. With
 3. **STEP III -** Run email dev for resend mailer with the email templates placed within the root folder [/components/email](/src/components/email/):
 
    ```shell
-    npm run email 
+    npm run email
     # or
     yarn email
    ```
