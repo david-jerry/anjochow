@@ -1,36 +1,48 @@
-# Anjochow - Delight Your Palate, Simplify Your Life: Where Every Bite Counts!
+# Anjochow - Delight Your Palate, Simplify Your Life: Where Every Bite Counts
+
+This is a project for a food vendoring, meal planning and delivery service. Within it lay features for unique functionalities and api endpoints as well.
 
 ## Getting Started
 
-First, run the development server:
+1. **STEP I -** Clone the project to your own system and change directory into thie clones project to get started. `run code`:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+   ```shell
+   git clone https://github.com/jerry-david/anjochow
+   cd anjochow
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **STEP II -** Install required packages for testing and development:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+   ```shell
+    npm install 
+    # or
+    yarn install
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+3. **STEP III -** Run email dev for resend mailer with the email templates placed within the root folder [/components/email](/src/components/email/):
 
-## Learn More
+   ```shell
+    npm run email 
+    # or
+    yarn email
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+    Within this folder you could redesign more email templates as you like and then build it to be production ready for use running the following command:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    ```shell
+    npm run email_build
+    # or
+    yarn email_build
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Key Features
 
-## Deploy on Vercel
+✔ Multi-Tenant Authentication
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+✔ Vendor Management
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+✔ Rider Alert and Auto Assigning
+
+✔ Customer Order List with `multiple location pickup points`
+
+[Read more](https://anjochow.com/about/features)
