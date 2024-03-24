@@ -14,6 +14,9 @@ const nextConfig = {
 
 const withPWA = withPWAInit({
     dest: "public",
+    register: true,
+    aggressiveFrontEndNavCaching: true,
+    cacheOnFrontEndNav: true,
     extendDefaultRuntimeCaching: true,
     fallbacks: {
         // Failed page requests fallback to this.

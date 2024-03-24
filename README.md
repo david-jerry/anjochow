@@ -37,13 +37,13 @@ This is a project for a food vendoring, meal planning and delivery service. With
 
 ## Key Features
 
-✔ Multi-Tenant Authentication
+[*] Multi-Tenant Authentication
 
-✔ Vendor Management
+[*] Vendor Management
 
-✔ Rider Alert and Auto Assigning
+[*] Rider Alert and Auto Assigning
 
-✔ Customer Order List with `multiple location pickup points`
+[*] Customer Order List with `multiple location pickup points`
 
 [Read more](https://anjochow.com/about/features)
 

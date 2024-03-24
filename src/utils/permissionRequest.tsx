@@ -49,12 +49,12 @@ const requestGeolocationPermission = async (): Promise<boolean> => {
         } else {
             // Log and throw an error if geolocation is not supported in the browser
             console.warn('Geolocation not supported in this browser.');
-            throw new Error('Geolocation not supported in this browser.');
+            return false
         }
     } catch (error) {
         // Log and throw an error if there is an issue during geolocation permission request
         console.error('Error requesting geolocation permission:', error);
-        throw error;
+       return false
     }
 };
 
@@ -104,42 +104,6 @@ const requestNotificationPermission = async (): Promise<boolean> => {
     } catch (error) {
         // Log and throw an error if there is an issue during notification permission request
         console.error('Error requesting notification permission:', error);
-        throw error;
+        return false
     }
 };
-
-
-
-/**
- * Requests share permission from the user using the Web Share API. Checks if the browser supports
- * the Web Share API and logs whether it is supported or not.
- *
- * @returns {boolean} A boolean indicating whether the Web Share API is supported in the browser.
- *
- * @example
- * const isShareSupported = requestSharePermission();
- * if (isShareSupported) {
- *    console.log('Web Share API is supported. You can use navigator.share() to trigger the share dialog.');
- *    // Example: await navigator.share({ title: 'My cool website', url: 'https://example.com' });
- * } else {
- *    console.warn('Web Share API is not supported in this browser.');
- * }
- */
-const requestSharePermission = async (): Promise<boolean> => {
-    try {
-        // Check if the Web Share API is supported
-        if ('share' in navigator) {
-            console.log('Web Share API is supported.');
-            return true;
-        } else {
-            console.warn('Web Share API is not supported in this browser.');
-            return false;
-        }
-    } catch (error) {
-        // Log and throw an error if there is an issue during share permission request
-        console.error('Error requesting share permission:', error);
-        throw error;
-    }
-};
-
-export { requestGeolocationPermission, requestNotificationPermission, requestSharePermission };

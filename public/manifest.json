@@ -1,9 +1,10 @@
 {
     "name": "Anjochow meal delivery and planning",
     "short_name": "Anjochow",
-    "them_color": "#FFFFFF",
+    "theme_color": "#FFC533",
     "background_color": "#FFFFFF",
     "start_url": "/",
+    "scope": "/",
     "display": "standalone",
     "orientation": "portrait",
     "icons": [
